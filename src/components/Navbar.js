@@ -43,6 +43,8 @@ export default function Navbar(props) {
          <label class="form-check-label" for="flexSwitchCheckDefault">Enable Dark Mode</label>
         </div>
       
+      <button onClick={props.toggleMode}  type="button" className="btn btn-primary">bittom</button>
+
       </div>
     </nav>
 

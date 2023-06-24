@@ -2,8 +2,15 @@ import './App.css';
 import React, { useState } from 'react'
 import Navbar from './components/Navbar';
 import Textform from './components/Textform';
-// import About from './components/About';
+import About from './components/About';
 import Alert from './components/Alert';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Switch,
+  Route,
+  Link,
+} from "react-router-dom";
 
 
 function App() {
@@ -21,26 +28,36 @@ function App() {
 
   const [mode, setMode] = useState('light')
 
-  const toggleMode = () =>{
-    if(mode === 'light'){
+  const toggleMode = () => {
+    if (mode === 'light') {
       setMode('dark');
       console.log("ha re bhaii.....")
     }
-    else{
+    else {
       setMode('light');
     }
   }
   return (
     <>
-      <Navbar rahnar="vishw" link="w3school" />
-        <Alert/>
+      <Router>
 
-      <div className="container my-3">
-        <Textform heading=" Enter your text to analyse"  mode = {mode} togglemode = {toggleMode} />
+        <Navbar rahnar="vishw" link="w3school" />
+        <Alert />
 
-        {/* <About/> */}
+        <div className="container my-3">
+        <Switch>
 
-      </div>
+        <Route exact path ="/Textform">
+
+          <Textform heading=" Enter your text to analyse" mode={mode} togglemode={toggleMode} />
+        </Route>
+        <Route exact path ="/About">
+          
+          <About />
+        </Route>
+        </Switch>
+        </div>
+      </Router>
     </>
 
   );
