@@ -1,12 +1,11 @@
-import { ReactPropTypes } from "react";
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default function Navbar(props) {
   return (
-
-    // <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
-    <nav className=" navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="/">Navbar</a>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <Link className="navbar-brand" to="/">Navbar</Link>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -14,21 +13,16 @@ export default function Navbar(props) {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
-            <a className="nav-link" href="/">{props.rahnar} <span className="sr-only">(current)</span></a>
+            <Link className="nav-link" to="/Home">{props.rahnar} <span className="sr-only">(current)</span></Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/">{props.link}</a>
+            <Link className="nav-link" to="/About">{props.link}</Link>
           </li>
           <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Dropdown
-            </a>
-            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a className="dropdown-item" href="/">Action</a>
-              <a className="dropdown-item" href="/">Another action</a>
-              <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="/">Something else here</a>
-            </div>
+            </Link>
+          
           </li>
           <li className="nav-item">
             <a className="nav-link disabled" href="#">Disabled</a>
@@ -38,21 +32,21 @@ export default function Navbar(props) {
           <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
           <button className="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>
-        <div class={`form-check form-switch text-${props.mode} mx-3`}>
-          <input class="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/> 
-         <label class="form-check-label" for="flexSwitchCheckDefault">Enable Dark Mode</label>
-        </div>
-      
-      <button onClick={props.toggleMode}  type="button" className="btn btn-primary">bittom</button>
-
+      </div>
+      <div className="form-check form-switch text-dark">
+        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable Dark Mode</label>
       </div>
     </nav>
-
-
   );
 }
 
 Navbar.defaultProps = {
   rahnar: "Home",
-  link: "Link"
-}
+  link: "About"
+};
+
+Navbar.propTypes = {
+  rahnar: PropTypes.string,
+  link: PropTypes.string
+};

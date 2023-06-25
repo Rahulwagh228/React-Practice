@@ -4,13 +4,13 @@ import Navbar from './components/Navbar';
 import Textform from './components/Textform';
 import About from './components/About';
 import Alert from './components/Alert';
+
 import {
-  createBrowserRouter,
-  RouterProvider,
-  Switch,
+  BrowserRouter,
   Route,
-  Link,
-} from "react-router-dom";
+  Routes,
+} from 'react-router-dom';
+
 
 
 function App() {
@@ -39,25 +39,21 @@ function App() {
   }
   return (
     <>
-      <Router>
+      <BrowserRouter>
 
-        <Navbar rahnar="vishw" link="w3school" />
-        <Alert />
+        <Navbar />
+        {/* <Alert /> */}
 
         <div className="container my-3">
-        <Switch>
+          <Routes>
+            
+              <Route exact path="/Home" element={<Textform heading=" Enter your text to analyse" mode={mode} togglemode={toggleMode} />}/>
 
-        <Route exact path ="/Textform">
-
-          <Textform heading=" Enter your text to analyse" mode={mode} togglemode={toggleMode} />
-        </Route>
-        <Route exact path ="/About">
-          
-          <About />
-        </Route>
-        </Switch>
+              <Route exact path="/About" element={<About />}/>
+             
+            </Routes>
         </div>
-      </Router>
+      </BrowserRouter>
     </>
 
   );
