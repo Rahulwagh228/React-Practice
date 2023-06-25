@@ -18,15 +18,7 @@ export default function Navbar(props) {
           <li className="nav-item">
             <Link className="nav-link" to="/About">{props.link}</Link>
           </li>
-          <li className="nav-item dropdown">
-            <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </Link>
-          
-          </li>
-          <li className="nav-item">
-            <a className="nav-link disabled" href="#">Disabled</a>
-          </li>
+           
         </ul>
         <form className="form-inline my-2 my-lg-0">
           <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
